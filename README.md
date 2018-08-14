@@ -1,11 +1,11 @@
-![Build Status](https://travis-ci.org/CITA-Toys/cita-web3-plugin.svg?branch=master)
-[![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/@cita/web3-plugin)
-[![npm type definitions](https://img.shields.io/npm/types/chalk.svg)](https://www.npmjs.com/package/@cita/web3-plugin)
-![npm](https://img.shields.io/npm/l/express.svg)
+![Build Status](https://travis-ci.org/cryptape/cita-web3-plugin.svg?branch=master)
+![npm (scoped)](https://img.shields.io/npm/v/@nervos/plugin.svg)
+[![MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/cryptape/cita-web3-plugin)
+[![AppChain](https://img.shields.io/badge/made%20for-Nervos%20AppChain-blue.svg)](https://appchain.nervos.org/)
 
 # CITA-Web3-Plugin
 
-Promise based [CITA RPC](https://cryptape.github.io/cita/usage-guide/rpc/) toolkit.
+Promise based [CITA RPC](https://cryptape.github.io/cita/zh/usage-guide/rpc/) toolkit.
 
 # Features
 
@@ -14,17 +14,17 @@ Promise based [CITA RPC](https://cryptape.github.io/cita/usage-guide/rpc/) toolk
 # Installing
 
 ```bash
-$ yarn add @cita/web3-plugin
+$ yarn add @nervos/plugin
 ```
 
 # Example
 
 ```javascript
-import web3Plugin from '@cita/web3-plugin'
+import nervosPlugin from '@nervos/plugin'
 
 const SERVER = 'localhost:1337'
 
-const { Nervos } = web3Plugin({ server: SERVER })
+const { Nervos } = nervosPlugin({ server: SERVER })
 
 /**
  * @function metadata
@@ -32,7 +32,7 @@ const { Nervos } = web3Plugin({ server: SERVER })
  * @param {{blockNumber}}
  * @return {Metadata}
  */
-Nervos.metadata({blockNumer: '0x0'}).then(metadata => console.log(metadata))
+Nervos.metadata({ blockNumer: '0x0' }).then(metadata => console.log(metadata))
 
 /**
  * @function netPeerCount
@@ -50,7 +50,7 @@ Nervos.netPeerCount().then(count => console.log(count))
  * @returns {object} block
  */
 Nervos.getBlockByNumber({
-  quantity: blockNumber
+  quantity: blockNumber,
   detailed: true,
 }).then(block => console.log(block))
 
@@ -63,10 +63,8 @@ Nervos.getBlockByNumber({
  */
 Nervos.getBlockByHash({
   hash: blockHash,
-  detailed: true
+  detailed: true,
 }).then(block => console.log(block))
-
-
 
 /**
  * @function getBlockHistory
@@ -93,7 +91,7 @@ Nervos.getTransaction('0x...').then(transaction => console.log(transaction))
  * @param {{topics: Topic[]}}
  * @return {object} Logs
  */
-Nervos.getLogs({topics: []}).then(logs => console.log(logs))
+Nervos.getLogs({ topics: [] }).then(logs => console.log(logs))
 
 /**
  * @function getBalance
@@ -101,7 +99,7 @@ Nervos.getLogs({topics: []}).then(logs => console.log(logs))
  * @param {{addr}} - addr: specified address
  * @return {Balance}
  */
-Nervos.getBalance({addr: '0x...'}).then(balance => console.log(balance))
+Nervos.getBalance({ addr: '0x...' }).then(balance => console.log(balance))
 
 /**
  * @function getTransactionCount
@@ -109,7 +107,7 @@ Nervos.getBalance({addr: '0x...'}).then(balance => console.log(balance))
  * @param {{addr, blockNumber}}
  * @return {TransactionCount}
  */
-Nervos.getTransactionCount({addr: '0x..', blockNumber: 'latest'}).then(count => console.log(count))
+Nervos.getTransactionCount({ addr: '0x..', blockNumber: 'latest' }).then(count => console.log(count))
 
 /**
  * @function getTransactionProof
@@ -120,6 +118,46 @@ Nervos.getTransactionCount({addr: '0x..', blockNumber: 'latest'}).then(count => 
 
 Nervos.getTransactionProof('0x...').then(proof => console.log(proof))
 
+/**
+ * @function newFilter
+ * @desc create new filter
+ * @param {Array<topic>} topics
+ * @return {string} filterId
+ */
+Nervos.newFilter([])
+
+/**
+ * @function newBlockFilter
+ * @desc create new block filter
+ * @param None
+ * @return {string} filterId
+ */
+Nervos.newBlockFilter()
+
+/**
+ * @function uninstallFilter
+ * @desc uninstall filter
+ * @param {string} filterId
+ * @return {boolean} success
+ */
+
+Nervos.uninstallFilter(id)
+
+/**
+ * @function getFilterChanges
+ * @desc get filter changes
+ * @param {string} filterId
+ * @return {Array<Result>} logArray
+ */
+Nervos.getFilterChanges(id)
+
+/**
+ * @function sendSignedTransaction
+ * @desc send signed transaction
+ * @param {string} signedTransaction
+ * @return {object}
+ */
+Nervos.sendSignedTransaction(signedTransaction)
 
 /**
  * @function setServer
