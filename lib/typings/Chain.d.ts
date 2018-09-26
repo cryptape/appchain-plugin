@@ -85,5 +85,6 @@ export declare namespace Chain {
         tokenSymbol: string;
         tokenAvatar: string;
         economicalModel: number;
+        version: number;
     }
 }
