@@ -62,6 +62,7 @@ export declare class Nervos {
     uninstallFilter: (filterId: string) => Promise<boolean>;
     getFilterChanges: (filterId: string) => Promise<Chain.Log[]>;
     getFilterLogs: (filterId: string) => Promise<Chain.Log[]>;
+    getQuotaPrice: (blockNumber?: string) => Promise<RpcResult.Result>;
 }
 declare const nervosWeb3Plugin: ({ Web3, server }: {
     Web3?: any;
