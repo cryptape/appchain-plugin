@@ -2,7 +2,7 @@ import { AxiosInstance } from 'axios';
 export { BasicTypes, RpcRequest, RpcResult, Chain, METHODS, BlockTransactionInfo } from './typings';
 import { RpcRequest, RpcResult, Chain, BlockTransactionInfo } from './typings';
 export declare const JSONRPC: ({ method, params, id, }: RpcRequest.Params) => RpcRequest.Request;
-export declare class Nervos {
+export declare class AppChain {
     server: string;
     citaFetchIns: AxiosInstance;
     citaFetch: (config: RpcRequest.Params) => Promise<RpcResult.Result>;
@@ -64,11 +64,11 @@ export declare class Nervos {
     getFilterLogs: (filterId: string) => Promise<Chain.Log[]>;
     getQuotaPrice: (blockNumber?: string) => Promise<RpcResult.Result>;
 }
-declare const nervosWeb3Plugin: ({ Web3, server }: {
+declare const appchainPlugin: ({ Web3, server }: {
     Web3?: any;
     server: string;
 }) => {
     web3: any;
-    Nervos: Nervos;
+    appchain: AppChain;
 };
-export default nervosWeb3Plugin;
+export default appchainPlugin;

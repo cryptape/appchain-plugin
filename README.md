@@ -1,11 +1,11 @@
-![Build Status](https://travis-ci.org/cryptape/nervos-plugin.svg?branch=master)
-![npm (scoped)](https://img.shields.io/npm/v/@nervos/plugin.svg)
-[![MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/cryptape/nervos-plugin)
-[![AppChain](https://img.shields.io/badge/made%20for-Nervos%20AppChain-blue.svg)](https://appchain.nervos.org/)
+![Build Status](https://travis-ci.org/cryptape/appchain-plugin.svg?branch=master)
+![npm (scoped)](https://img.shields.io/npm/v/@appchain/plugin.svg)
+[![MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/cryptape/appchain-plugin)
+[![AppChain](https://img.shields.io/badge/made%20for-Nervos%20AppChain-blue.svg)](https://appchain.appchain.org/)
 
-# Nervos-Plugin
+# AppChain-Plugin
 
-Promise based [CITA RPC](https://cryptape.github.io/cita/zh/usage-guide/rpc/) toolkit.
+Promise based [CITA RPC](https://docs.nervos.org/cita/#/rpc_guide/rpc) toolkit.
 
 # Features
 
@@ -14,17 +14,17 @@ Promise based [CITA RPC](https://cryptape.github.io/cita/zh/usage-guide/rpc/) to
 # Installing
 
 ```bash
-$ yarn add @nervos/plugin
+$ yarn add @appchain/plugin
 ```
 
 # Example
 
 ```javascript
-import nervosPlugin from '@nervos/plugin'
+import appchainPlugin from '@appchain/plugin'
 
 const SERVER = 'localhost:1337'
 
-const { Nervos } = nervosPlugin({ server: SERVER })
+const { appchain } = appchainPlugin({ server: SERVER })
 
 /**
  * @function metadata
@@ -32,7 +32,7 @@ const { Nervos } = nervosPlugin({ server: SERVER })
  * @param {{blockNumber}}
  * @return {Metadata}
  */
-Nervos.metadata({ blockNumer: '0x0' }).then(metadata => console.log(metadata))
+appchain.metadata({ blockNumer: '0x0' }).then(metadata => console.log(metadata))
 
 /**
  * @function netPeerCount
@@ -40,7 +40,7 @@ Nervos.metadata({ blockNumer: '0x0' }).then(metadata => console.log(metadata))
  * @param null
  * @returns {string} peerCount
  */
-Nervos.netPeerCount().then(count => console.log(count))
+appchain.netPeerCount().then(count => console.log(count))
 
 /**
  * @function getBlockByNumber
@@ -49,10 +49,12 @@ Nervos.netPeerCount().then(count => console.log(count))
  * @param {boolean} detialed - return transaction list if true, otherwise return hash of transaction
  * @returns {object} block
  */
-Nervos.getBlockByNumber({
-  quantity: blockNumber,
-  detailed: true,
-}).then(block => console.log(block))
+appchain
+  .getBlockByNumber({
+    quantity: blockNumber,
+    detailed: true,
+  })
+  .then(block => console.log(block))
 
 /**
  * @function getBlockByHash
@@ -61,10 +63,12 @@ Nervos.getBlockByNumber({
  * @param {boolean} detailed - return transaction list if true, otherwise return hash of transaction
  * @returns {object} block
  */
-Nervos.getBlockByHash({
-  hash: blockHash,
-  detailed: true,
-}).then(block => console.log(block))
+appchain
+  .getBlockByHash({
+    hash: blockHash,
+    detailed: true,
+  })
+  .then(block => console.log(block))
 
 /**
  * @function getBlockHistory
@@ -72,10 +76,12 @@ Nervos.getBlockByHash({
  * @param {by: string, count: number} - by: the startpoint of history, count: the count of records to retrieve
  * @return {array} list of block
  */
-Nervos.getBlockHistory({
-  by: '0x4bb99',
-  count: 5,
-}).then(blocks => console.log(blocks))
+appchain
+  .getBlockHistory({
+    by: '0x4bb99',
+    count: 5,
+  })
+  .then(blocks => console.log(blocks))
 
 /**
  * @function getTransaction
@@ -83,7 +89,7 @@ Nervos.getBlockHistory({
  * @param {string} transactionHash
  * @return {object} Transaction
  */
-Nervos.getTransaction('0x...').then(transaction => console.log(transaction))
+appchain.getTransaction('0x...').then(transaction => console.log(transaction))
 
 /**
  * @function getLogs
@@ -91,7 +97,7 @@ Nervos.getTransaction('0x...').then(transaction => console.log(transaction))
  * @param {{topics: Topic[]}}
  * @return {object} Logs
  */
-Nervos.getLogs({ topics: [] }).then(logs => console.log(logs))
+appchain.getLogs({ topics: [] }).then(logs => console.log(logs))
 
 /**
  * @function getBalance
@@ -99,7 +105,7 @@ Nervos.getLogs({ topics: [] }).then(logs => console.log(logs))
  * @param {{addr}} - addr: specified address
  * @return {Balance}
  */
-Nervos.getBalance({ addr: '0x...' }).then(balance => console.log(balance))
+appchain.getBalance({ addr: '0x...' }).then(balance => console.log(balance))
 
 /**
  * @function getTransactionCount
@@ -107,7 +113,7 @@ Nervos.getBalance({ addr: '0x...' }).then(balance => console.log(balance))
  * @param {{addr, blockNumber}}
  * @return {TransactionCount}
  */
-Nervos.getTransactionCount({ addr: '0x..', blockNumber: 'latest' }).then(count => console.log(count))
+appchain.getTransactionCount({ addr: '0x..', blockNumber: 'latest' }).then(count => console.log(count))
 
 /**
  * @function getTransactionProof
@@ -116,7 +122,7 @@ Nervos.getTransactionCount({ addr: '0x..', blockNumber: 'latest' }).then(count =
  * @return {string} transaction proof
  */
 
-Nervos.getTransactionProof('0x...').then(proof => console.log(proof))
+appchain.getTransactionProof('0x...').then(proof => console.log(proof))
 
 /**
  * @function newFilter
@@ -124,7 +130,7 @@ Nervos.getTransactionProof('0x...').then(proof => console.log(proof))
  * @param {Array<topic>} topics
  * @return {string} filterId
  */
-Nervos.newFilter([])
+appchain.newFilter([])
 
 /**
  * @function newBlockFilter
@@ -132,7 +138,7 @@ Nervos.newFilter([])
  * @param None
  * @return {string} filterId
  */
-Nervos.newBlockFilter()
+appchain.newBlockFilter()
 
 /**
  * @function uninstallFilter
@@ -141,7 +147,7 @@ Nervos.newBlockFilter()
  * @return {boolean} success
  */
 
-Nervos.uninstallFilter(id)
+appchain.uninstallFilter(id)
 
 /**
  * @function getFilterChanges
@@ -149,7 +155,7 @@ Nervos.uninstallFilter(id)
  * @param {string} filterId
  * @return {Array<Result>} logArray
  */
-Nervos.getFilterChanges(id)
+appchain.getFilterChanges(id)
 
 /**
  * @function sendSignedTransaction
@@ -157,7 +163,7 @@ Nervos.getFilterChanges(id)
  * @param {string} signedTransaction
  * @return {object}
  */
-Nervos.sendSignedTransaction(signedTransaction)
+appchain.sendSignedTransaction(signedTransaction)
 
 /**
  * @function setServer
@@ -166,5 +172,5 @@ Nervos.sendSignedTransaction(signedTransaction)
  * @return undefined
  */
 
-Nervos.setServer('http://localhost:1301')
+appchain.setServer('http://localhost:1301')
 ```

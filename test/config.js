@@ -1,5 +1,5 @@
 const {
-  default: NervosWeb3Plugin,
+  default: appcahinPlugin,
   JSONRPC
 } = require('../lib/')
 
@@ -10,8 +10,8 @@ const bytecode = '6060604052341561000f57600080fd5b60d38061001d6000396000f3006060
 const abi = JSON.parse("[{\"constant\":false,\"inputs\":[{\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"set\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"get\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}]")
 
 const {
-  Nervos: nervos
-} = NervosWeb3Plugin({
+  appchain
+} = appcahinPlugin({
   server: SERVER,
 })
 
@@ -20,6 +20,6 @@ module.exports = {
   address,
   bytecode,
   abi,
-  nervos,
+  appchain,
   JSONRPC,
 }

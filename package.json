@@ -1,5 +1,5 @@
 {
-  "name": "@nervos/plugin",
+  "name": "@appchain/plugin",
   "version": "0.18.4",
   "keywords": [
     "Nervos",
@@ -10,7 +10,7 @@
   ],
   "main": "lib/index.js",
   "types": "lib/index.d.js",
-  "repository": "https://github.com/cryptape/nervos-plugin",
+  "repository": "https://github.com/cryptape/appchain-plugin",
   "author": "Keith <keithwhisper@gmail.com>",
   "license": "MIT",
   "scripts": {
@@ -24,13 +24,13 @@
     "testURL": "http://localhost/"
   },
   "devDependencies": {
-    "@nervos/signer": "^1.0.21",
     "@types/node": "^9.6.1",
     "jest": "^23.5.0",
     "ts-protoc-gen": "^0.7.3",
     "typescript": "^2.8.1"
   },
   "dependencies": {
+    "@appchain/signer": "^2.0.1",
     "@types/google-protobuf": "^3.2.7",
     "axios": "^0.18.0",
     "google-protobuf": "^3.5.0"
