@@ -14,7 +14,7 @@ export const JSONRPC = ({
   id,
 })
 
-export class Nervos {
+export class AppChain {
   public server: string
   public citaFetchIns: AxiosInstance
   public citaFetch: (config: RpcRequest.Params) => Promise<RpcResult.Result>
@@ -259,11 +259,18 @@ export class Nervos {
     }) as Promise<RpcResult.FilterChanges>
 
   public getFilterLogs = this.getFilterChanges
+
+  public getQuotaPrice = (blockNumber = 'latest') => {
+    return this.citaFetch({
+      method: METHODS.CALL,
+      params: [{ data: '0x6bacc53f', to: '0xffffffffffffffffffffffffffffffffff020010' }, blockNumber],
+    })
+  }
 }
 
-const nervosWeb3Plugin = ({ Web3, server }: { Web3?: any; server: string }) => {
+const appchainPlugin = ({ Web3, server }: { Web3?: any; server: string }) => {
   const web3 = Web3 ? new Web3(new Web3.providers.HttpProvider(server)) : null
-  return { web3, Nervos: new Nervos(server) }
+  return { web3, appchain: new AppChain(server) }
 }
 
-export default nervosWeb3Plugin
+export default appchainPlugin

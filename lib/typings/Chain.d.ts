@@ -26,7 +26,7 @@ export declare namespace Chain {
         stateRoot: BasicTypes.Hash;
         transactionsRoot: BasicTypes.Hash;
         proof: {
-            Tendermint: {
+            Bft: {
                 proposal: BasicTypes.Hash;
                 height: number;
                 round: number;
@@ -84,5 +84,7 @@ export declare namespace Chain {
         tokenName: string;
         tokenSymbol: string;
         tokenAvatar: string;
+        economicalModel: number;
+        version: number;
     }
 }
