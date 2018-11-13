@@ -1,5 +1,5 @@
-![Build Status](https://travis-ci.org/cryptape/appchain-plugin.svg?branch=master)
-![npm (scoped)](https://img.shields.io/npm/v/@appchain/plugin.svg)
+[![Build Status](https://travis-ci.org/cryptape/appchain-plugin.svg?branch=develop)](https://travis-ci.org/cryptape/appchain-plugin)
+[![npm (scoped)](https://img.shields.io/npm/v/@appchain/plugin.svg)](https://www.npmjs.com/package/@appchain/plugin)
 [![MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/cryptape/appchain-plugin)
 [![AppChain](https://img.shields.io/badge/made%20for-Nervos%20AppChain-blue.svg)](https://appchain.appchain.org/)
 
