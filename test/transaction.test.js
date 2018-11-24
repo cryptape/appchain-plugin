@@ -13,7 +13,7 @@ const tx = {
   "nonce": "47",
   "quota": 999999,
   "validUntilBlock": 114930,
-  "version": 0,
+  "version": 1,
   "chainId": 1,
   "value": '0',
 }

@@ -20,7 +20,8 @@ export declare namespace Chain {
         timestamp: number;
         prevHash: BasicTypes.Hash;
         number: string;
-        gasUsed: string;
+        gasUsed?: string;
+        quotaUsed: string;
         proposer: BasicTypes.Hash;
         receiptsRoot: BasicTypes.Hash;
         stateRoot: BasicTypes.Hash;
@@ -43,7 +44,8 @@ export declare namespace Chain {
         stateRoot: BasicTypes.Hash;
         transactionsRoot: BasicTypes.Hash;
         receiptsRoot: BasicTypes.Hash;
-        gasUsed: string;
+        gasUsed?: string;
+        quotaUsed: string;
         number: string;
         proposer: BasicTypes.Hash;
         body: {
@@ -55,8 +57,10 @@ export declare namespace Chain {
         transactionIndex: string;
         blockHash: BasicTypes.Hash;
         blockNumber: string;
-        cumulativeGasUsed: string;
-        gasUsed: string;
+        cumulativeGasUsed?: string;
+        cumulativeQuotaUsed: string;
+        gasUsed?: string;
+        quotaUsed: string;
         contractAddress: BasicTypes.Hash | null;
         logs: Log[];
         root: BasicTypes.Hash;
